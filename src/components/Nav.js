@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Dropdown from '../components/Dropdown';
 
 class Nav extends Component {
   constructor() {
@@ -37,6 +38,7 @@ class Nav extends Component {
         }}>
         <h1 className="Nav-header">Memoize</h1>
         <i className="fas fa-bars"></i>
+        <Dropdown />
       </nav>
     );
   }
