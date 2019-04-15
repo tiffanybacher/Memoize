@@ -1,0 +1,28 @@
+.Flashcard {
+  @include border();
+  background-color: white;
+  // height: 200px;
+  margin: 0 auto 30px;
+
+  .Flashcard-question {
+    margin: 30px 0;
+    padding: 0 20px;
+    text-align: center;
+  }
+}
+
+// iPad
+@media only screen and (min-width: 768px) {
+  
+  .Flashcard {
+    // height: 300px;
+  }
+}
+
+// iPad Pro
+@media only screen and (min-width: 1024px) {
+
+  .Flashcard {
+    // height: 400px;
+  }
+}
