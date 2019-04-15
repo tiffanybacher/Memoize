@@ -1,5 +1,5 @@
 const data = {
-cardQuestions: [ 
+objectQuestions: [ 
   {
     "question": "What is an object in JavaScript?",
     "answer": "An object in JavaScript can be compared to an object in real life. It is a stand alone entity with it's own set of properties and methods.",
@@ -122,7 +122,7 @@ cardQuestions: [
   }
 ],
 
-quizQuestions: [
+catQuestions: [
   {
     "question": "What are the property keys of the cat?",
     "answer": ["name", "color", "age"],

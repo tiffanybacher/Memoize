@@ -3,7 +3,7 @@ import Nav from '../components/Nav';
 import Cat from '../components/Cat';
 import Flashcard from '../components/Flashcard';
 import AnswerInput from '../components/AnswerInput';
-import cardQuestions from '../data';
+import UserAnswer from '../components/UserAnswer';
 
 let data = require('../data.js');
 
@@ -11,20 +11,38 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      question: data.cardQuestions[0].question,
+      group: 1,
+      question: data.objectQuestions[0].question,
       answer: '',
-      displayAnswer: false
+      displayAnswer: false,
+      displayUserAnswer: false
     }
   }
 
   findAnswer = () => {
     this.setState({
-      answer: data.cardQuestions[0].answer,
+      answer: data.objectQuestions[0].answer,
       displayAnswer: true
     }, () => {console.log(this.state.answer)});
   }
 
+  showUserAnswer = () => {
+    this.setState({
+      displayUserAnswer: true
+    })
+  }
+
   render() {
+    if (this.state.displayUserAnswer) {
+      var answerInput = <UserAnswer />
+    } else {
+      var answerInput = 
+        <AnswerInput 
+          findAnswer={this.findAnswer} 
+          showUserAnswer={this.showUserAnswer}
+        />
+    }
+
     return (
       <div className="App">
         <header className="App-header">
@@ -40,7 +58,7 @@ class App extends Component {
               answer={this.state.answer}
               displayAnswer={this.state.displayAnswer}
             />
-            <AnswerInput findAnswer={this.findAnswer} />
+            {answerInput}
           </div>
         </section>
       </div>
