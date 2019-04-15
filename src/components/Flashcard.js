@@ -11,16 +11,13 @@ class Flashcard extends Component {
         <p className="Flashcard-answer">
           {this.props.answer}
         </p>
-    } else {
-      var question = 
-        <h3 className="Flashcard-question">
-          {this.props.question}
-        </h3>
     }
 
     return (
       <article className="Flashcard">
-        {question}
+        <h3 className="Flashcard-question">
+          {this.props.question}
+        </h3>
         {answer}
       </article>
     )
