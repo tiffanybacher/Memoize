@@ -1,0 +1,9 @@
+// SCSS MIXINS
+
+@mixin border() {
+  border: $purple-border;
+  border-radius: $rounded-border;
+  box-shadow: $subtle-shadow;
+  -moz-box-shadow: $subtle-shadow; 
+  -webkit-box-shadow: $subtle-shadow;
+}
