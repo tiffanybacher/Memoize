@@ -5,6 +5,11 @@ class UserAnswer extends Component {
     super(props);
   }
 
+  handleClick = () => {
+    this.props.hideAnswer();
+    this.props.displayNextQuestion();
+  }
+
   render() {
     return (
       <section className="UserAnswer">
@@ -12,7 +17,8 @@ class UserAnswer extends Component {
         <p>{this.props.userAnswer}</p>
         <div className="user-btn-area">
           <button 
-            className="green-btn">
+            className="green-btn"
+            onClick={this.handleClick}>
               I feel good about this!</button>
           <button 
             className="grey-btn">

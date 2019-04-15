@@ -42,6 +42,25 @@ class App extends Component {
     });
   }
 
+  getNextQuestion = () => {
+    let length = this.state.cardQuestions.length
+    this.setState({
+      cardQuestions: this.state.cardQuestions.slice(1, length)
+    })
+  }
+
+  hideAnswer = () => {
+    this.setState({
+      displayAnswer: false
+    })
+  }
+
+  displayNextQuestion = () => {
+    this.setState({
+      question: this.state.cardQuestions[0].question
+    })
+  }
+
   render() {
     console.log(this.state.cardQuestions)
 
@@ -51,7 +70,10 @@ class App extends Component {
 
     if (this.state.displayAnswer) {
       answerInput = 
-        <UserAnswer userAnswer={this.state.userAnswer}/>
+        <UserAnswer 
+        userAnswer={this.state.userAnswer}
+        hideAnswer={this.hideAnswer}
+        displayNextQuestion={this.displayNextQuestion} />
       instructions =
         <p>If you feel good about your answer, click the top button to move on! If you think you may need more review, click the bottom button to come back to this question later.</p>
       header = 
@@ -61,6 +83,7 @@ class App extends Component {
         <AnswerInput 
           findAnswer={this.findAnswer}
           getUserAnswer={this.getUserAnswer}
+          getNextQuestion={this.getNextQuestion}
         />
       instructions = 
         <p>Answer the question on the flashcard below. Submit your answer first then check your answer!</p>

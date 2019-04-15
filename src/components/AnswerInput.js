@@ -17,6 +17,7 @@ class AnswerInput extends Component {
   handleClick = () => {
     this.props.findAnswer();
     this.props.getUserAnswer(this.state.userInput);
+    this.props.getNextQuestion();
   }
 
   render() {
