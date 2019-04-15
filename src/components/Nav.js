@@ -37,7 +37,7 @@ class Nav extends Component {
           transition: `transform 200ms linear`
         }}>
         <h1 className="Nav-header">Memoize</h1>
-        <i className="fas fa-bars"></i>
+        <i className="fas fa-bars bars-active"></i>
         <Dropdown />
       </nav>
     );

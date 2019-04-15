@@ -1,0 +1,32 @@
+.bars-active {
+  color: $pink;
+  background-color: white;
+  padding: 5px 10px;
+  border-radius: 3px 3px 0 0;
+}
+
+.Dropdown {
+  position: fixed;
+  background-color: white;
+  color: $pink;
+  font-weight: 600;
+  font-size: 1.3em;
+  top: 55px;
+  right: 25px;
+  box-shadow: -3px 3px 1px rgba(0, 0, 0, 0.2);
+  border-radius: $rounded-border;
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      padding: 15px 25px 0;
+
+      &:last-child {
+        padding-bottom: 15px;
+      }
+    }
+  }
+}
