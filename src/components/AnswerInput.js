@@ -5,9 +5,13 @@ class AnswerInput extends Component {
     super(props);
   }
 
+  handleChange = (e) => {
+    
+  }
+
   handleClick = () => {
     this.props.findAnswer();
-    this.props.showUserAnswer();
+    this.props.getUserAnswer(this.userInput.innerText);
   }
 
   render() {
@@ -18,7 +22,9 @@ class AnswerInput extends Component {
           <div 
             role="textbox"
             className="input"
-            contentEditable="true">
+            contentEditable="true"
+            ref={el => (this.userInput = el)}
+          >
           </div>
         </div>
           <div

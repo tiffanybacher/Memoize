@@ -15,7 +15,7 @@ class App extends Component {
       question: data.objectQuestions[0].question,
       answer: '',
       displayAnswer: false,
-      displayUserAnswer: false
+      userAnswer: 'WHAT'
     }
   }
 
@@ -26,20 +26,20 @@ class App extends Component {
     }, () => {console.log(this.state.answer)});
   }
 
-  showUserAnswer = () => {
+  getUserAnswer = (answerInput) => {
     this.setState({
-      displayUserAnswer: true
-    })
+      userAnswer: answerInput
+    }, () => console.log(this.state.userAnswer));
   }
 
   render() {
-    if (this.state.displayUserAnswer) {
+    if (this.state.displayAnswer) {
       var answerInput = <UserAnswer />
     } else {
       var answerInput = 
         <AnswerInput 
-          findAnswer={this.findAnswer} 
-          showUserAnswer={this.showUserAnswer}
+          findAnswer={this.findAnswer}
+          getUserAnswer={this.getUserAnswer}
         />
     }
 
