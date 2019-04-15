@@ -3,15 +3,20 @@ import React, { Component } from 'react';
 class AnswerInput extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      userInput: ''
+    }
   }
 
-  handleChange = (e) => {
-    
+  handleInput = (e) => {
+    this.setState({
+      userInput: e.target.innerText
+    });
   }
 
   handleClick = () => {
     this.props.findAnswer();
-    this.props.getUserAnswer(this.userInput.innerText);
+    this.props.getUserAnswer(this.state.userInput);
   }
 
   render() {
@@ -23,7 +28,7 @@ class AnswerInput extends Component {
             role="textbox"
             className="input"
             contentEditable="true"
-            ref={el => (this.userInput = el)}
+            onInput={this.handleInput}
           >
           </div>
         </div>
