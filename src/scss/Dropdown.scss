@@ -1,20 +1,19 @@
 .bars-active {
-  color: $pink;
   background-color: white;
-  padding: 5px 10px;
   border-radius: 3px 3px 0 0;
+  color: $pink;
 }
 
 .Dropdown {
-  position: fixed;
   background-color: white;
-  color: $pink;
-  font-weight: 600;
-  font-size: 1.3em;
-  top: 55px;
-  right: 25px;
-  box-shadow: -3px 3px 1px rgba(0, 0, 0, 0.2);
   border-radius: $rounded-border;
+  box-shadow: -3px 3px 1px rgba(0, 0, 0, 0.2);
+  color: $pink;
+  font-size: 1.3em;
+  font-weight: 600;
+  position: fixed;
+  right: 25px;
+  top: 55px;
 
   ul {
     list-style: none;
@@ -22,10 +21,19 @@
     padding: 0;
 
     li {
-      padding: 15px 25px 0;
+      padding: 10px 25px 10px;
+      
+      &:first-child {
+        margin-top: 10px;
+      }
 
       &:last-child {
-        padding-bottom: 15px;
+        margin-bottom: 10px;
+      }
+
+      &:hover {
+        background-color: $pink;
+        color: white;
       }
     }
   }
