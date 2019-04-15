@@ -12,29 +12,48 @@
     flex-direction: column;
     margin: 15px 0 0 0;
 
-    .green-btn,
-    .grey-btn {
+    button {
       border: none;
       border-radius: $rounded-border;
       color: white;
       font-family: "Montserrat";
-      font-size: 1.2em;
+      font-size: 1.1em;
       font-weight: 600;
       padding: 18px;
       margin: 10px 0 0 0;
-      min-width: 200px;
-
-      &:hover {
-        background-color: #333;
-      }
     }
 
     .green-btn {
       background-color: $green;
+      
+      &:hover {
+        background-color: $light-green;
+      }
     }
-
+    
     .grey-btn {
       background-color: #999;
+
+      &:hover {
+        background-color: #666;
+      }
     }
+  }
+}
+
+.next-btn {
+  background-color: #999;
+  border: none;
+  border-radius: $rounded-border;
+  color: white;
+  font-family: "Montserrat";
+  font-size: 1.1em;
+  font-weight: 600;
+  padding: 18px;
+  margin: 10px 0 0 0;
+  width: 100%;
+
+  &:hover {
+    background-color: #666;
   }
 }

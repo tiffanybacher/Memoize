@@ -5,8 +5,6 @@ import Flashcard from '../components/Flashcard';
 import AnswerInput from '../components/AnswerInput';
 import UserAnswer from '../components/UserAnswer';
 
-// let data = require('../data.js');
-
 class App extends Component {
   constructor() {
     super();
@@ -16,7 +14,8 @@ class App extends Component {
       question: '',
       answer: '',
       displayAnswer: false,
-      userAnswer: ''
+      userAnswer: '',
+      displaySavedMsg: false
     }
   }
 
@@ -61,19 +60,35 @@ class App extends Component {
     })
   }
 
-  render() {
-    console.log(this.state.cardQuestions)
+  displaySavedMsg = () => {
+    this.setState({
+      displaySavedMsg: true
+    })
+  }
 
+  render() {
     let answerInput;
     let instructions;
     let header;
 
-    if (this.state.displayAnswer) {
+   
+    if (this.state.displayAnswer && this.state.displaySavedMsg) {
       answerInput = 
         <UserAnswer 
         userAnswer={this.state.userAnswer}
         hideAnswer={this.hideAnswer}
-        displayNextQuestion={this.displayNextQuestion} />
+        displayNextQuestion={this.displayNextQuestion}
+        displaySavedMsg={this.displaySavedMsg} />
+      instructions = null;
+      header = 
+      <h2>No problem! We will save this question to your Missed Flashcards!</h2>
+    } else if (this.state.displayAnswer) {
+      answerInput = 
+        <UserAnswer 
+        userAnswer={this.state.userAnswer}
+        hideAnswer={this.hideAnswer}
+        displayNextQuestion={this.displayNextQuestion}
+        displaySavedMsg={this.displaySavedMsg} />
       instructions =
         <p>If you feel good about your answer, click the top button to move on! If you think you may need more review, click the bottom button to come back to this question later.</p>
       header = 
