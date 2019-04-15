@@ -1,4 +1,5 @@
-const objectQuestions = [ 
+const data = {
+cardQuestions: [ 
   {
     "question": "What is an object in JavaScript?",
     "answer": "An object in JavaScript can be compared to an object in real life. It is a stand alone entity with it's own set of properties and methods.",
@@ -119,9 +120,9 @@ const objectQuestions = [
     "id": 20,
     "group": 4
   }
-]
+],
 
-const catQuestions = [
+quizQuestions: [
   {
     "question": "What are the property keys of the cat?",
     "answer": ["name", "color", "age"],
@@ -176,9 +177,9 @@ const catQuestions = [
     "id": 4.1,
     "group":4
   }
-]
+],
 
-const cats = [
+cats: [
   {
     "name": "Abe",
     "color": "orange",
@@ -192,9 +193,6 @@ const cats = [
     "fed": false
   }
 ]
-
-module.exports = {
-  objectQuestions,
-  catQuestions,
-  cats
 }
+
+module.exports = data;

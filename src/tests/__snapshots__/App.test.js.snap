@@ -19,6 +19,9 @@ exports[`App should match snapshot 1`] = `
       <h2>
         Learn About Objects and Classes!
       </h2>
+      <p>
+        Answer the question on the flashcard below. Check your answer before moving on to the next card!
+      </p>
       <Flashcard />
       <AnswerInput />
     </div>

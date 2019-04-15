@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
 
 class AnswerInput extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  handleClick = () => {
+    this.props.findAnswer();
+  }
+
   render() {
     return (
       <article className="AnswerInput">
@@ -12,6 +20,12 @@ class AnswerInput extends Component {
             contentEditable="true">
           </div>
         </div>
+          <div
+            role="button"
+            className="submit-btn"
+            onClick={this.handleClick}>
+            Submit 
+          </div>
       </article>
     );
   }
