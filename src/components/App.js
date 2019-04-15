@@ -15,6 +15,7 @@ class App extends Component {
         <section className="main-background">
           <div className="main-container">
             <h2>Learn About Objects and Classes!</h2>
+            <p>Answer the question on the flashcard below. Check your answer before moving on to the next card!</p>
             <Flashcard />
             <AnswerInput />
           </div>
