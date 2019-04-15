@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Nav should match snapshot 1`] = `
+<nav
+  className="Nav"
+  style={
+    Object {
+      "transform": "translate(0, 0)",
+      "transition": "transform 200ms linear",
+    }
+  }
+>
+  <h1
+    className="Nav-header"
+  >
+    Memoize
+  </h1>
+  <i
+    className="fas fa-bars"
+  />
+</nav>
+`;

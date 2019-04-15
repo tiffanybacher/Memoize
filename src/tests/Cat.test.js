@@ -1,24 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { shallow } from 'enzyme';
-import Nav from '../components/Nav';
+import Cat from '../components/Cat';
 
-describe('Nav', () => {
-  let wrapper; 
+describe('Cat', () => {
+  let wrapper;
   
   beforeEach(() => {
     wrapper = shallow(
-      <Nav />
+      <Cat />
     );
   });
 
   it('should match snapshot', () => {
     expect(wrapper).toMatchSnapshot();
-  });
-
-  it('should have default state', () => {
-    expect(wrapper.state()).toEqual({
-      slide: 0
-    });
-  });
+  })
 });

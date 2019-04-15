@@ -1,21 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { shallow } from 'enzyme';
-import App from '../components/App';
+import Flashcard from '../components/Flashcard'
 
-describe('App', () => {
+describe('Flashcard', () => {
   let wrapper;
 
   beforeEach(() => {
     wrapper = shallow(
-      <App />
+      <Flashcard />
     );
-  });
-
-  it('renders without crashing', () => {
-    const div = document.createElement('div');
-    ReactDOM.render(<App />, div);
-    ReactDOM.unmountComponentAtNode(div);
   });
 
   it('should match snapshot', () => {
@@ -23,8 +17,6 @@ describe('App', () => {
   });
 
   it.skip('should have a default state', () => {
-
+    
   });
 });
-
-
