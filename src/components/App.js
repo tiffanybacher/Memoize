@@ -30,8 +30,6 @@ class App extends Component {
       .then(data => this.setState({
         currentCardData: this.state.cardSelection[0] }))
       .catch(err => console.log(err));
-
-    
   }
 
   showAnswer = () => {
@@ -44,6 +42,18 @@ class App extends Component {
     this.setState({
       userAnswer: answerInput
     });
+  }
+
+  getSavedCardSelection = () => {
+    return JSON.parse(localStorage.getItem('savedSelection'));
+  }
+
+  startFreshCardSelection = () => {
+    if (!this.state.cardSelection) {
+      this.setState({
+        cardSelection: this.state.allCards
+      });
+    }
   }
 
   updateCardSelection = () => {
@@ -62,7 +72,7 @@ class App extends Component {
     }
   }
 
-  saveAllCardsToStorage = () => {
+  saveCurrentCardsToStorage = () => {
     if (this.state.cardSelection) {
       let savedSelection = JSON.parse(localStorage.getItem('savedSelection'));
 
@@ -72,20 +82,8 @@ class App extends Component {
     }
   }
 
-  getSavedCardSelection = () => {
-    return JSON.parse(localStorage.getItem('savedSelection'));
-  }
-
-  startFreshCardSelection = () => {
-    if (!this.state.cardSelection) {
-      this.setState({
-        cardSelection: this.state.allCards
-      });
-    }
-  }
-
   updateCardData = () => {
-    this.saveAllCardsToStorage();
+    this.saveCurrentCardsToStorage();
     if (this.state.cardSelection) {
       this.setState({
         currentCardData: this.state.cardSelection[0]
@@ -143,9 +141,9 @@ class App extends Component {
   }
 
   render() {
-    console.log('saved cards:', this.state.savedCards);
-    console.log('card selection:', this.state.cardSelection);
-    console.log('current card:', this.state.currentCardData);
+    // console.log('saved cards:', this.state.savedCards);
+    // console.log('card selection:', this.state.cardSelection);
+    // console.log('current card:', this.state.currentCardData);
 
     let userInput;
 

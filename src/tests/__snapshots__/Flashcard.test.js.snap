@@ -6,8 +6,6 @@ exports[`Flashcard should match snapshot 1`] = `
 >
   <h3
     className="Flashcard-question"
-  >
-    Mock question?
-  </h3>
+  />
 </article>
 `;
