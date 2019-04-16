@@ -21,20 +21,13 @@ const mockAllCards = [
   }
 ];
 const mockCardSelection = mockAllCards;
-const mockSavedCards = [
-  {
-    "question": "What is a method?",
-    "answer": "A method is a function that describes a behavior of an object.",
-    "id": 2,
-    "group": 1
-  }
-]
 const mockCurrentCardData = {
     "question": "What is an object in JavaScript?",
     "answer": "An object in JavaScript can be compared to an object in real life. It is a stand alone entity with it's own set of properties and methods.",
     "id": 1,
     "group": 1
   }
+const mockSavedCards = [mockCurrentCardData];
 const mockQuestion = 'What is an object in JavaScript?';
 const mockAnswer = 'An object in JavaScript can be compared to an object in real life. It is a stand alone entity with it\'s own set of properties and methods.';
 const mockUserAnswer = 'An object is something that represents a thing in real life.';
@@ -189,11 +182,31 @@ describe('App', () => {
 
   it('should be able to take in multiple cards to savedCards', () => {
     wrapper.setState({
-      currentCardData: mockCurrentCardData,
+      currentCardData: mockCardSelection[1],
       savedCards: mockSavedCards
     });
 
-    expect(wrapper.state('savedCards')).toEqual(mockCurrentCardData);
+    wrapper.instance().updateSavedCards();
+
+    expect(wrapper.state('savedCards')).toEqual(mockCardSelection);
+  });
+
+  it('should hide answer', () => {
+    wrapper.instance().hideAnswer();
+
+    expect(wrapper.state('answerIsShown')).toEqual(false);
+  });
+
+  it('should show message letting user know we saved a card', () => {
+    wrapper.instance().showSavedMsg();
+
+    expect(wrapper.state('savedMsgIsShown')).toEqual(true);
+  });
+
+  it('should hide message letting user know we saved a card', () => {
+    wrapper.instance().hideSavedMsg();
+
+    expect(wrapper.state('savedMsgIsShown')).toEqual(false);
   });
 });
 
