@@ -4,7 +4,7 @@ import Cat from '../components/Cat';
 import Instructions from '../components/Instructions'
 import Flashcard from '../components/Flashcard';
 import AnswerInput from '../components/AnswerInput';
-import UserAnswer from '../components/UserAnswer';
+import UserArea from '../components/UserArea';
 
 class App extends Component {
   constructor() {
@@ -103,7 +103,7 @@ class App extends Component {
 
     if (this.state.answerIsShown) {
       userInput = 
-        <UserAnswer 
+        <UserArea 
         userAnswer={this.state.userAnswer}
         hideAnswer={this.hideAnswer}
         getNextQuestion={this.getNextQuestion}
