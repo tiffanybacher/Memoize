@@ -15,8 +15,7 @@ class Dropdown extends Component {
         <ul onMouseLeave={this.handleMouseLeave}>
           <li>All Flashcards</li>
           <li>Missed Flashcards</li>
-          <li>Review Sheet</li>
-          <li>Take Quiz</li>
+          <li>Start Over</li>
         </ul>
       </article>
     );

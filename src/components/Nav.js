@@ -31,7 +31,7 @@ class Nav extends Component {
   handleClick = () => {
     this.setState({
       showDropdown: !this.state.showDropdown
-    }, () => {console.log(this.state.showDropdown)});
+    });
   }
 
   hideDropdown = () => {

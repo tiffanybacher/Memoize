@@ -11,12 +11,12 @@ class UserArea extends Component {
   moveToNextQuestion = () => {
     this.props.hideSavedMsg();
     this.props.hideAnswer();
-    this.props.getNextQuestion();
-    this.props.displayNextQuestion();
+    this.props.updateCardSelection();
   }
 
-  displaySavedMsg = () => {
+  saveCard = () => {
     this.props.saveCardToStorage();
+    this.props.updateSavedCards();
     this.props.showSavedMsg();
     this.setState({
       displaySavedBtn: true
@@ -44,7 +44,7 @@ class UserArea extends Component {
                 I feel good about this!</button>
             <button 
               className="save-btn"
-              onClick={this.displaySavedMsg}>
+              onClick={this.saveCard}>
                 I may need to come back to this.</button>
           </div>
         </section>
