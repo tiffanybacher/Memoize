@@ -5,7 +5,7 @@ exports[`AnswerInput should match snapshot 1`] = `
   className="AnswerInput"
 >
   <h3>
-    Answer:
+    What's your guess?
   </h3>
   <div
     className="flex-container"
@@ -13,11 +13,13 @@ exports[`AnswerInput should match snapshot 1`] = `
     <div
       className="input"
       contentEditable="true"
+      onInput={[Function]}
       role="textbox"
     />
   </div>
   <div
     className="submit-btn"
+    onClick={[Function]}
     role="button"
   >
     Submit

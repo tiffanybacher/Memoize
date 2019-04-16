@@ -1,0 +1,58 @@
+.UserAnswer {
+
+  p {
+    background-color: white;
+    border-radius: $rounded-border;
+    margin: 0;
+    padding: 20px;
+  }
+
+  .user-btn-area {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0 0 0;
+
+    button {
+      background-color: #999;
+      border: none;
+      border-radius: $rounded-border;
+      color: white;
+      font-family: "Montserrat";
+      font-size: 1.1em;
+      font-weight: 600;
+      padding: 18px;
+      margin: 10px 0 0 0;
+    }
+
+    .accept-btn {
+
+      &:hover {
+        background-color: $pink;
+      }
+    }
+    
+    .save-btn {
+
+      &:hover {
+        background-color: $purple;
+      }
+    }
+  }
+}
+
+.next-btn {
+  background-color: #999;
+  border: none;
+  border-radius: $rounded-border;
+  color: white;
+  font-family: "Montserrat";
+  font-size: 1.1em;
+  font-weight: 600;
+  padding: 18px;
+  margin: 10px 0 0 0;
+  width: 100%;
+
+  &:hover {
+    background-color: $purple;
+  }
+}

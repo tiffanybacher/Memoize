@@ -17,6 +17,7 @@ exports[`Nav should match snapshot 1`] = `
   </h1>
   <i
     className="fas fa-bars"
+    onClick={[Function]}
   />
 </nav>
 `;

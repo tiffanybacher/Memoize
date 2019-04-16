@@ -3,6 +3,13 @@ import ReactDOM from 'react-dom';
 import { shallow } from 'enzyme';
 import Nav from '../components/Nav';
 
+const handleScroll = jest.fn();
+
+const defaultState = {
+  slide: 0,
+  showDropdown: false
+}
+
 describe('Nav', () => {
   let wrapper; 
   
@@ -17,8 +24,6 @@ describe('Nav', () => {
   });
 
   it('should have default state', () => {
-    expect(wrapper.state()).toEqual({
-      slide: 0
-    });
+    expect(wrapper.state()).toEqual(defaultState);
   });
 });

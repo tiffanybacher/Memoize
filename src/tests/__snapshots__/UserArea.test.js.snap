@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserArea should match snapshot if displayNextBtn is false 1`] = `
+<section
+  className="UserAnswer"
+>
+  <h3>
+    Your Answer:
+  </h3>
+  <p>
+    An object is an object.
+  </p>
+  <div
+    className="user-btn-area"
+  >
+    <button
+      className="accept-btn"
+      onClick={[Function]}
+    >
+      I feel good about this!
+    </button>
+    <button
+      className="save-btn"
+      onClick={[Function]}
+    >
+      I may need to come back to this.
+    </button>
+  </div>
+</section>
+`;
+
+exports[`UserArea should match snapshot if displayNextBtn is true 1`] = `
+<button
+  className="next-btn"
+  onClick={[Function]}
+>
+  Okay! Next Question!
+</button>
+`;
