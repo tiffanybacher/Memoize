@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Instructions should match snapshot 1`] = `
+<section
+  className="Instructions"
+>
+  <h2>
+    Learn About Objects and Classes!
+  </h2>
+  <p>
+    Answer the question on the flashcard below. Submit your answer first then check your answer!
+  </p>
+</section>
+`;

@@ -67,12 +67,16 @@ describe('App', () => {
   });
 
   it('should show answer when showAnswer is called', () => {
+    expect(wrapper.state('answerIsShown')).toEqual(false);
+
     wrapper.instance().showAnswer();
 
     expect(wrapper.state('answerIsShown')).toEqual(true);
   });
 
   it('should update userAnswer when getUserAnswer is called', () => {
+    expect(wrapper.state('userAnswer')).toEqual('');
+
     wrapper.instance().getUserAnswer(mockUserAnswer);
 
     expect(wrapper.state('userAnswer')).toEqual(mockUserAnswer);
@@ -90,6 +94,8 @@ describe('App', () => {
       cardSelection: null
     });
 
+    expect(wrapper.state('cardSelection')).toEqual(null);
+
     wrapper.instance().startFreshCardSelection();
 
     expect(wrapper.state('cardSelection')).toEqual(mockAllCards);
@@ -101,14 +107,11 @@ describe('App', () => {
       cardSelection: null
     });
 
+    expect(wrapper.state('cardSelection')).toEqual(null);
+
     wrapper.instance().updateCardSelection();
 
-    expect(wrapper.state('cardSelection')).toEqual([{
-      "question": "What is a method?",
-      "answer": "A method is a function that describes a behavior of an object.",
-      "id": 2,
-      "group": 1
-    }]);
+    expect(wrapper.state('cardSelection')).toEqual([mockAllCards[1]]);
   });
 
   it('should remove the current card of cardSelection and return a new selection to cardSelection', () => {
@@ -117,14 +120,11 @@ describe('App', () => {
       cardSelection: mockCardSelection
     });
 
+    expect(wrapper.state('cardSelection')).toEqual(mockCardSelection);
+
     wrapper.instance().updateCardSelection();
 
-    expect(wrapper.state('cardSelection')).toEqual([{
-      "question": "What is a method?",
-      "answer": "A method is a function that describes a behavior of an object.",
-      "id": 2,
-      "group": 1
-    }]);
+    expect(wrapper.state('cardSelection')).toEqual([mockCardSelection[1]]);
   });
 
   it('should save current card selection to storage if a current selection exists', () => {
@@ -141,6 +141,8 @@ describe('App', () => {
       cardSelection: mockCardSelection
     });
 
+    expect(wrapper.state('currentCardData')).toEqual('');
+
     wrapper.instance().updateCardData();
 
     expect(wrapper.state('currentCardData')).toEqual(mockCurrentCardData);
@@ -152,12 +154,14 @@ describe('App', () => {
       cardSelection: null
     });
 
+    expect(wrapper.state('currentCardData')).toEqual('');
+
     wrapper.instance().updateCardData();
     
     expect(wrapper.state('currentCardData')).toEqual(mockCurrentCardData);
   });
 
-  it('should get save cards from local storage', () => {
+  it('should get saved cards from local storage', () => {
     wrapper.instance().getSavedCards();
 
     expect(localStorage.getItem).toHaveBeenCalled();
@@ -175,6 +179,8 @@ describe('App', () => {
       savedCards: null
     });
 
+    expect(wrapper.state('savedCards')).toEqual(null);
+
     wrapper.instance().updateSavedCards();
 
     expect(wrapper.state('savedCards')).toEqual([mockCurrentCardData]);
@@ -186,9 +192,17 @@ describe('App', () => {
       savedCards: mockSavedCards
     });
 
+    expect(wrapper.state('savedCards')).toEqual(mockSavedCards);
+
     wrapper.instance().updateSavedCards();
 
     expect(wrapper.state('savedCards')).toEqual(mockCardSelection);
+  });
+
+  it('should show answer', () => {
+    wrapper.instance().showAnswer();
+
+    expect(wrapper.state('answerIsShown')).toEqual(true);
   });
 
   it('should hide answer', () => {

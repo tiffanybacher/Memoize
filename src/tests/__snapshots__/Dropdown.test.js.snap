@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dropdown should match snapshot 1`] = `
+<article
+  className="Dropdown"
+>
+  <ul
+    onMouseLeave={[Function]}
+  >
+    <li>
+      All Flashcards
+    </li>
+    <li>
+      Missed Flashcards
+    </li>
+    <li>
+      Start Over
+    </li>
+  </ul>
+</article>
+`;

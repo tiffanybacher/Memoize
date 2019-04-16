@@ -4,7 +4,7 @@ class UserArea extends Component {
   constructor(props) {
     super(props);
     this.state = { 
-      displaySavedBtn: false
+      displayNextBtn: false
     }
   }
 
@@ -19,12 +19,12 @@ class UserArea extends Component {
     this.props.updateSavedCards();
     this.props.showSavedMsg();
     this.setState({
-      displaySavedBtn: true
+      displayNextBtn: true
     });
   }
 
   render() {
-    if (this.state.displaySavedBtn) {
+    if (this.state.displayNextBtn) {
       return (
           <button
             className="next-btn"
