@@ -13,6 +13,7 @@
     margin: 15px 0 0 0;
 
     button {
+      background-color: #999;
       border: none;
       border-radius: $rounded-border;
       color: white;
@@ -23,19 +24,17 @@
       margin: 10px 0 0 0;
     }
 
-    .green-btn {
-      background-color: $green;
-      
+    .accept-btn {
+
       &:hover {
-        background-color: $light-green;
+        background-color: $pink;
       }
     }
     
-    .grey-btn {
-      background-color: #999;
+    .save-btn {
 
       &:hover {
-        background-color: #666;
+        background-color: $purple;
       }
     }
   }
@@ -54,6 +53,6 @@
   width: 100%;
 
   &:hover {
-    background-color: #666;
+    background-color: $purple;
   }
 }

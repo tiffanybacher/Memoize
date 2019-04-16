@@ -15,15 +15,14 @@ class AnswerInput extends Component {
   }
 
   handleClick = () => {
-    this.props.findAnswer();
+    this.props.showAnswer();
     this.props.getUserAnswer(this.state.userInput);
-    this.props.getNextQuestion();
   }
 
   render() {
     return (
       <article className="AnswerInput">
-        <h3>Answer:</h3>
+        <h3>What's your guess?</h3>
         <div className="flex-container">
           <div 
             role="textbox"

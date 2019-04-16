@@ -8,13 +8,16 @@ class UserAnswer extends Component {
     }
   }
 
-  handleGreenClick = () => {
+  moveToNextQuestion = () => {
+    this.props.hideSavedMsg();
     this.props.hideAnswer();
+    this.props.getNextQuestion();
     this.props.displayNextQuestion();
   }
 
-  handleGreyClick = () => {
-    this.props.displaySavedMsg();
+  displaySavedMsg = () => {
+    this.props.saveCardToStorage();
+    this.props.showSavedMsg();
     this.setState({
       displaySavedBtn: true
     });
@@ -25,7 +28,7 @@ class UserAnswer extends Component {
       return (
           <button
             className="next-btn"
-            onClick={this.handleGreenClick}>
+            onClick={this.moveToNextQuestion}>
             Okay! Next Question!
           </button>
       );
@@ -36,12 +39,12 @@ class UserAnswer extends Component {
           <p>{this.props.userAnswer}</p>
           <div className="user-btn-area">
             <button 
-              className="green-btn"
-              onClick={this.handleGreenClick}>
+              className="accept-btn"
+              onClick={this.moveToNextQuestion}>
                 I feel good about this!</button>
             <button 
-              className="grey-btn"
-              onClick={this.handleGreyClick}>
+              className="save-btn"
+              onClick={this.displaySavedMsg}>
                 I may need to come back to this.</button>
           </div>
         </section>

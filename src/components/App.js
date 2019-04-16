@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Nav from '../components/Nav';
 import Cat from '../components/Cat';
+import Instructions from '../components/Instructions'
 import Flashcard from '../components/Flashcard';
 import AnswerInput from '../components/AnswerInput';
 import UserAnswer from '../components/UserAnswer';
@@ -10,12 +11,14 @@ class App extends Component {
     super();
     this.state = {
       group: 1,
-      cardQuestions: '',
-      question: '',
-      answer: '',
-      displayAnswer: false,
+      allCards: '',
+      currentCardData: '',
+      currentQuestion: '',
+      currentAnswer: '',
+      answerIsShown: false,
       userAnswer: '',
-      displaySavedMsg: false
+      savedMsgIsShown: false,
+      savedCards: null
     }
   }
 
@@ -23,15 +26,16 @@ class App extends Component {
     fetch('https://fe-apps.herokuapp.com/api/v1/memoize/1901/tiffanybacher/objectquestions')
       .then(response => response.json())
       .then(data => this.setState({
-        cardQuestions: data.objectQuestions,
-        question: data.objectQuestions[0].question}))
+        allCards: data.objectQuestions,
+        currentCardData: data.objectQuestions[0],
+        currentQuestion: data.objectQuestions[0].question,
+        currentAnswer: data.objectQuestions[0].answer }))
       .catch(err => console.log(err));
   }
 
-  findAnswer = () => {
+  showAnswer = () => {
     this.setState({
-      answer: this.state.cardQuestions[0].answer,
-      displayAnswer: true
+      answerIsShown: true
     });
   }
 
@@ -42,68 +46,77 @@ class App extends Component {
   }
 
   getNextQuestion = () => {
-    let length = this.state.cardQuestions.length
+    let length = this.state.allCards.length
+
     this.setState({
-      cardQuestions: this.state.cardQuestions.slice(1, length)
-    })
+      allCards: this.state.allCards.slice(1, length),
+    });
+  }
+
+  saveCardToStorage = () => {
+    if (this.state.savedCards) {
+      let allSavedCards = JSON.parse(localStorage.getItem('savedCards'));
+      allSavedCards.push(this.state.allCards[0]);
+      localStorage.setItem('savedCards', JSON.stringify(allSavedCards));
+      this.setState({
+        savedCards: this.state.savedCards.push(this.state.allCards[0])
+      });
+    } else {
+      localStorage.setItem('savedCards', JSON.stringify([this.state.allCards[0]]));
+      this.setState({
+        saveCards: [this.state.allCards[0]]
+      })
+    }
+    
   }
 
   hideAnswer = () => {
     this.setState({
-      displayAnswer: false
-    })
+      answerIsShown: false
+    });
   }
 
   displayNextQuestion = () => {
     this.setState({
-      question: this.state.cardQuestions[0].question
-    })
+      question: this.state.allCards[0].question
+    });
   }
 
-  displaySavedMsg = () => {
+  showSavedMsg = () => {
     this.setState({
-      displaySavedMsg: true
+      savedMsgIsShown: true
+    });
+  }
+
+  hideSavedMsg = () => {
+    this.setState({
+      savedMsgIsShown: false
     })
   }
 
   render() {
-    let answerInput;
-    let instructions;
-    let header;
 
-   
-    if (this.state.displayAnswer && this.state.displaySavedMsg) {
-      answerInput = 
+    console.log('saved cards:', this.state.savedCards);
+    console.log('all cards:', this.state.allCards)
+
+    let userInput;
+
+    if (this.state.answerIsShown) {
+      userInput = 
         <UserAnswer 
         userAnswer={this.state.userAnswer}
         hideAnswer={this.hideAnswer}
+        getNextQuestion={this.getNextQuestion}
         displayNextQuestion={this.displayNextQuestion}
-        displaySavedMsg={this.displaySavedMsg} />
-      instructions = null;
-      header = 
-      <h2>No problem! We will save this question to your Missed Flashcards!</h2>
-    } else if (this.state.displayAnswer) {
-      answerInput = 
-        <UserAnswer 
-        userAnswer={this.state.userAnswer}
-        hideAnswer={this.hideAnswer}
-        displayNextQuestion={this.displayNextQuestion}
-        displaySavedMsg={this.displaySavedMsg} />
-      instructions =
-        <p>If you feel good about your answer, click the top button to move on! If you think you may need more review, click the bottom button to come back to this question later.</p>
-      header = 
-        <h2>Check your answer!</h2>
+        showSavedMsg={this.showSavedMsg}
+        hideSavedMsg={this.hideSavedMsg}
+        saveCardToStorage={this.saveCardToStorage} />
     } else {
-      answerInput = 
+      userInput = 
         <AnswerInput 
-          findAnswer={this.findAnswer}
+          showAnswer={this.showAnswer}
           getUserAnswer={this.getUserAnswer}
-          getNextQuestion={this.getNextQuestion}
         />
-      instructions = 
-        <p>Answer the question on the flashcard below. Submit your answer first then check your answer!</p>
-      header =
-        <h2>Learn About Objects and Classes!</h2>
     }
 
     return (
@@ -114,14 +127,15 @@ class App extends Component {
         <Cat />
         <section className="main-background">
           <div className="main-container">
-            {header}
-            {instructions}
+            <Instructions
+              answerIsShown={this.state.answerIsShown}
+              savedMsgIsShown={this.state.savedMsgIsShown} />
             <Flashcard 
-              question={this.state.question}
-              answer={this.state.answer}
-              displayAnswer={this.state.displayAnswer}
+              question={this.state.currentQuestion}
+              answer={this.state.currentAnswer}
+              answerIsShown={this.state.answerIsShown}
             />
-            {answerInput}
+            {userInput}
           </div>
         </section>
       </div>

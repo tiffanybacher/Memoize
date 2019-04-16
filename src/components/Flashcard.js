@@ -6,7 +6,7 @@ class Flashcard extends Component {
   }
 
   render() {
-    if (this.props.displayAnswer) {
+    if (this.props.answerIsShown) {
       var answer = 
         <p className="Flashcard-answer">
           {this.props.answer}
