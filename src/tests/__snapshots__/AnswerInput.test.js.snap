@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AnswerInput should match snapshot 1`] = `
+<article
+  className="AnswerInput"
+>
+  <h3>
+    Answer:
+  </h3>
+  <div
+    className="flex-container"
+  >
+    <div
+      className="input"
+      contentEditable="true"
+      role="textbox"
+    />
+  </div>
+  <div
+    className="submit-btn"
+    role="button"
+  >
+    Submit
+  </div>
+</article>
+`;

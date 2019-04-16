@@ -1,0 +1,40 @@
+.bars-active {
+  background-color: white;
+  border-radius: 3px 3px 0 0;
+  color: $pink;
+}
+
+.Dropdown {
+  background-color: white;
+  border-radius: $rounded-border;
+  box-shadow: -3px 3px 1px rgba(0, 0, 0, 0.2);
+  color: $pink;
+  font-size: 1.3em;
+  font-weight: 600;
+  position: fixed;
+  right: 25px;
+  top: 55px;
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      padding: 10px 25px 10px;
+      
+      &:first-child {
+        margin-top: 10px;
+      }
+
+      &:last-child {
+        margin-bottom: 10px;
+      }
+
+      &:hover {
+        background-color: $pink;
+        color: white;
+      }
+    }
+  }
+}

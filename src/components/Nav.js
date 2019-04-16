@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import Dropdown from '../components/Dropdown';
 
 class Nav extends Component {
   constructor() {
     super();
-
     this.state = {
-      slide: 0
+      slide: 0,
+      showDropdown: false
     }
   }
 
@@ -27,16 +28,40 @@ class Nav extends Component {
     }
   }
 
+  handleClick = () => {
+    this.setState({
+      showDropdown: !this.state.showDropdown
+    }, () => {console.log(this.state.showDropdown)});
+  }
+
+  hideDropdown = () => {
+    this.setState({
+      showDropdown: false
+    })
+  }
+
   render() {
+    if (this.state.showDropdown) {
+      var dropdown = <Dropdown 
+        showDropdown={this.state.showDropdown}
+        hideDropdown={this.hideDropdown} />
+    }
+
     return (
       <nav 
         className="Nav"
         style={{
           transform: `translate(0, ${this.state.slide})`,
-          transition: `transform 200ms linear`
-        }}>
+          transition: `transform 200ms linear` 
+        }} >
         <h1 className="Nav-header">Memoize</h1>
-        <i className="fas fa-bars"></i>
+        <i 
+          className={this.state.showDropdown 
+          ? "fas fa-bars bars-active"
+          : "fas fa-bars"}
+          onClick={this.handleClick}>
+        </i>
+        {dropdown}
       </nav>
     );
   }

@@ -1,0 +1,40 @@
+.UserAnswer {
+
+  p {
+    background-color: white;
+    border-radius: $rounded-border;
+    margin: 0;
+    padding: 20px;
+  }
+
+  .user-btn-area {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0 0 0;
+
+    .green-btn,
+    .grey-btn {
+      border: none;
+      border-radius: $rounded-border;
+      color: white;
+      font-family: "Montserrat";
+      font-size: 1.2em;
+      font-weight: 600;
+      padding: 18px;
+      margin: 10px 0 0 0;
+      min-width: 200px;
+
+      &:hover {
+        background-color: #333;
+      }
+    }
+
+    .green-btn {
+      background-color: $green;
+    }
+
+    .grey-btn {
+      background-color: #999;
+    }
+  }
+}

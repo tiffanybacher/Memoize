@@ -1,19 +1,24 @@
 import React, { Component } from 'react';
 
 class Flashcard extends Component {
-  constructor() {
-    super();
-    this.state = {
-      question: 'Mock question?',
-      answer: 'Mock answer.'
-    }
+  constructor(props) {
+    super(props);
   }
+
   render() {
+    if (this.props.displayAnswer) {
+      var answer = 
+        <p className="Flashcard-answer">
+          {this.props.answer}
+        </p>
+    }
+
     return (
       <article className="Flashcard">
         <h3 className="Flashcard-question">
-          {this.state.question}
+          {this.props.question}
         </h3>
+        {answer}
       </article>
     )
   }
