@@ -9,17 +9,43 @@
   width: 100%;
   min-width: 320px;
   z-index: 4;
+
+  .Nav-header {
+    font-family: "Roboto Slab";
+    font-size: 2em;
+    margin: 0;
+    padding: 15px 25px;
+  }
+
+  .bars-btn {
+    background-color: transparent;
+    border: none;
+    margin: 0 15px;
+    padding: 10px;
+
+    &:focus {
+      outline-color: #FCE0E1;
+    }
+
+    .fa-bars {
+      color: white;
+      font-size: 3em;
+      margin: 0;
+      padding: 0;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .bars-active {
+    background-color: white;
+    border-radius: 3px 3px 0 0;
+
+    .fa-bars {
+      color: $pink;
+    }
+  }
 }
 
-.Nav-header {
-  font-family: "Roboto Slab";
-  font-size: 2em;
-  margin: 0;
-  padding: 15px 25px;
-}
-
-.fa-bars {
-  font-size: 2em;
-  margin: 0px 25px;
-  padding: 5px 10px;
-}

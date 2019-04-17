@@ -32,12 +32,12 @@ class AnswerInput extends Component {
           >
           </div>
         </div>
-          <div
+          <button
             role="button"
             className="submit-btn"
             onClick={this.handleClick}>
             Submit 
-          </div>
+          </button>
       </article>
     );
   }

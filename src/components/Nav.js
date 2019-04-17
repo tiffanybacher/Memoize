@@ -57,12 +57,14 @@ class Nav extends Component {
           transition: `transform 200ms linear` 
         }} >
         <h1 className="Nav-header">Memoize</h1>
-        <i 
-          className={this.state.showDropdown 
-          ? "fas fa-bars bars-active"
-          : "fas fa-bars"}
-          onClick={this.handleClick}>
-        </i>
+        <button className={this.state.showDropdown 
+          ? "bars-btn bars-active"
+          : "bars-btn"}>
+          <i 
+            className="fas fa-bars"
+            onClick={this.handleClick}>
+          </i>
+        </button>
         {dropdown}
       </nav>
     );

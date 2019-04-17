@@ -193,7 +193,8 @@ class App extends Component {
           <div className="main-container">
             <Instructions
               answerIsShown={this.state.answerIsShown}
-              savedMsgIsShown={this.state.savedMsgIsShown} />
+              savedMsgIsShown={this.state.savedMsgIsShown}
+              allCardsShown={this.state.allCardsShown} />
             {this.state.flashcardShown &&
               <Flashcard 
                 question={this.state.currentCardData.question}

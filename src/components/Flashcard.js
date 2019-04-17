@@ -15,7 +15,7 @@ class Flashcard extends Component {
   render() {
     if (this.props.answerIsShown || this.state.answerIsShown) {
       var answer = 
-        <p className="Flashcard-answer">
+        <p aria-live="polite" className="Flashcard-answer">
           {this.props.answer}
         </p>
     }
@@ -31,7 +31,7 @@ class Flashcard extends Component {
 
     return (
       <article className="Flashcard">
-        <h3 className="Flashcard-question">
+        <h3 aria-live="polite" className="Flashcard-question">
           {this.props.question}
         </h3>
         {answer}

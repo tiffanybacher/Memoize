@@ -3,4 +3,12 @@
   h2 {
     margin: 0 0 20px 0;
   }
+
+  .back-btn {
+    text-decoration: underline;
+
+    &:hover {
+      color: $purple;
+    }
+  }
 }

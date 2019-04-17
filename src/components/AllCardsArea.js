@@ -13,7 +13,8 @@ class AllCardsArea extends Component {
           <Flashcard 
             question={card.question}
             answer={card.answer}
-            allCardsShown={this.props.allCardsShown} />
+            allCardsShown={this.props.allCardsShown}
+            key={card.id} />
         )}
       </section>
     );

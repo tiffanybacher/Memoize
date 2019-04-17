@@ -9,3 +9,28 @@
 @import 'Flashcard';
 @import 'AnswerInput';
 @import 'UserArea';
+@import 'AllCardsArea';
+
+html {
+  margin: 0;
+  padding: 0;
+  min-width: 400px;
+
+  body {
+    background-color: $teal;
+    color: $dark-purple;
+    cursor: default;
+    font-family: "Montserrat", "Roboto", -apple-system, BlinkMacSystemFont, sans-serif;
+    margin: 0;
+    padding: 0;
+
+    a:hover,
+    button:hover {
+      cursor: pointer
+    }
+
+    *:focus {
+      outline-color: #999;
+    }
+  }
+}
