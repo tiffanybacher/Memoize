@@ -4,12 +4,23 @@ class Flashcard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      answerIsShown: false
+      answerIsShown: false,
+      showBtnValue: 'Show Answer'
     }
   }
 
-  showAnswer = () => {
-    console.log('Flashcard.showAnswer')
+  toggleAnswer = () => {
+    if (!this.state.answerIsShown) {
+      this.setState({
+        answerIsShown: true,
+        showBtnValue: 'Hide Answer'
+      });
+    } else {
+      this.setState({
+        answerIsShown: false,
+        showBtnValue: 'Show Answer'
+      });
+    }
   }
 
   render() {
@@ -24,8 +35,8 @@ class Flashcard extends Component {
       var showButton = 
         <button 
           className="show-btn"
-          onClick={this.showAnswer}>
-          Show Answer
+          onClick={this.toggleAnswer}>
+          {this.state.showBtnValue}
         </button>
     }
 

@@ -6,12 +6,12 @@ import Flashcard from '../components/Flashcard';
 import AnswerInput from '../components/AnswerInput';
 import UserArea from '../components/UserArea';
 import AllCardsArea from '../components/AllCardsArea';
+import MissedCardsArea from '../components/MissedCardsArea';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      group: 1,
       allCards: '',
       cardSelection: this.getSavedCardSelection() || null,
       currentCardData: '',
@@ -20,7 +20,8 @@ class App extends Component {
       savedMsgIsShown: false,
       savedCards: this.getSavedCards() || null,
       flashcardShown: true,
-      allCardsShown: false
+      allCardsShown: false,
+      missedCardsShown: false
     }
   }
 
@@ -140,26 +141,36 @@ class App extends Component {
   hideSavedMsg = () => {
     this.setState({
       savedMsgIsShown: false
-    })
+    });
   }
 
   hideMainFlashcard = () => {
     this.setState({
       flashcardShown: false
-    })
+    });
   }
 
   showAllFlashcards = () => {
     this.setState({
       allCardsShown: true
-    })
+    });
+  }
+
+  showMissedFlashcards = () => {
+    this.setState({
+      missedCardsShown: true
+    });
+  }
+
+  backToMainCard = () => {
+    this.setState({
+      allCardsShown: false,
+      missedCardsShown: false,
+      flashcardShown: true
+    });
   }
 
   render() {
-    // console.log('saved cards:', this.state.savedCards);
-    // console.log('card selection:', this.state.cardSelection);
-    // console.log('current card:', this.state.currentCardData);
-
     let UserInput;
 
     if (this.state.answerIsShown) {
@@ -186,7 +197,8 @@ class App extends Component {
         <header className="App-header">
           <Nav 
             hideMainFlashcard={this.hideMainFlashcard}
-            showAllFlashcards={this.showAllFlashcards} />
+            showAllFlashcards={this.showAllFlashcards}
+            showMissedFlashcards={this.showMissedFlashcards} />
         </header>
         <Cat />
         <section className="main-background">
@@ -194,18 +206,30 @@ class App extends Component {
             <Instructions
               answerIsShown={this.state.answerIsShown}
               savedMsgIsShown={this.state.savedMsgIsShown}
-              allCardsShown={this.state.allCardsShown} />
+              allCardsShown={this.state.allCardsShown}
+              missedCardsShown={this.state.missedCardsShown}
+              backToMainCard ={this.backToMainCard }
+              savedCards={this.state.savedCards} />
+
             {this.state.flashcardShown &&
               <Flashcard 
                 question={this.state.currentCardData.question}
                 answer={this.state.currentCardData.answer}
                 answerIsShown={this.state.answerIsShown} /> 
             } 
+
             {this.state.allCardsShown &&
               <AllCardsArea
                 allCards={this.state.allCards}
                 allCardsShown={this.state.allCardsShown} />
             }
+
+            {this.state.missedCardsShown &&
+              <MissedCardsArea
+                savedCards={this.state.savedCards}
+                missedCardsShown={this.state.missedCardsShown} />
+            }
+            
             {UserInput}
           </div>
         </section>

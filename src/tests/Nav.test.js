@@ -4,6 +4,9 @@ import { shallow } from 'enzyme';
 import Nav from '../components/Nav';
 
 const handleScroll = jest.fn();
+const hideMainFlashcard = jest.fn();
+const showAllFlashcards = jest.fn();
+const showMissedFlashcards = jest.fn();
 
 const defaultState = {
   slide: 0,
@@ -15,7 +18,10 @@ describe('Nav', () => {
   
   beforeEach(() => {
     wrapper = shallow(
-      <Nav />
+      <Nav 
+        hideMainFlashcard={hideMainFlashcard}
+        showAllFlashcards={showAllFlashcards}
+        showMissedFlashcards={showMissedFlashcards} />
     );
   });
 
@@ -25,5 +31,11 @@ describe('Nav', () => {
 
   it('should have default state', () => {
     expect(wrapper.state()).toEqual(defaultState);
+  });
+
+  it('should hide dropdown menu', () => {
+    wrapper.instance().hideDropdown();
+
+    expect(wrapper.state('showDropdown')).toEqual(false);
   });
 });

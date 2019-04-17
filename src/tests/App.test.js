@@ -33,14 +33,16 @@ const mockAnswer = 'An object in JavaScript can be compared to an object in real
 const mockUserAnswer = 'An object is something that represents a thing in real life.';
 
 const defaultState = {
-  group: 1,
   allCards: '',
   cardSelection: null,
   currentCardData: '',
   answerIsShown: false,
   userAnswer: '',
   savedMsgIsShown: false,
-  savedCards: null
+  savedCards: null,
+  flashcardShown: true,
+  allCardsShown: false,
+  missedCardsShown: false
 }
 
 describe('App', () => {
@@ -221,6 +223,38 @@ describe('App', () => {
     wrapper.instance().hideSavedMsg();
 
     expect(wrapper.state('savedMsgIsShown')).toEqual(false);
+  });
+
+  it('should hide main flashcard', () => {
+    wrapper.instance().hideMainFlashcard();
+
+    expect(wrapper.state('flashcardShown')).toEqual(false)
+  });
+
+  it('should show All Flashcards', () => {
+    expect(wrapper.state('allCardsShown')).toEqual(false);
+
+    wrapper.instance().showAllFlashcards();
+
+    expect(wrapper.state('allCardsShown')).toEqual(true);
+  });
+
+  it('should show all Missed Flashcards', () => {
+    expect(wrapper.state('missedCardsShown')).toEqual(false);
+
+    wrapper.instance().showMissedFlashcards();
+
+    expect(wrapper.state('missedCardsShown')).toEqual(true);
+  });
+
+  it('should default back to main card', () => {
+    wrapper.instance().backToMainCard();
+
+    expect(wrapper.state('allCardsShown')).toEqual(false);
+
+    expect(wrapper.state('missedCardsShown')).toEqual(false);
+
+    expect(wrapper.state('flashcardShown')).toEqual(true);
   });
 });
 

@@ -10,21 +10,15 @@ class Dropdown extends Component {
   }
 
   goToAllFlashcards = () => {
-    console.log('all flashcards')
     this.props.hideMainFlashcard();
     this.props.showAllFlashcards();
-    // map through all cards to create a card component
-    // tap btn to reveal answer
-    // btn only available if allCardsShown is true
+    this.props.hideDropdown();
   }
 
   goToMissedFlashcards = () => {
-    console.log('missed flashcards')
-   // render missedCards component
-   // map through each card to create a card component
-   // tap btn to reveal answer
-   // tap btn to remove card from review deck
-   // buttons only available if missedCardsShown is true
+   this.props.hideMainFlashcard();
+   this.props.showMissedFlashcards();
+   this.props.hideDropdown();
   }
 
   startOver = () => {
@@ -40,7 +34,7 @@ class Dropdown extends Component {
       <article className="Dropdown">
         <ul onMouseLeave={this.handleMouseLeave}>
           <li onClick={this.goToAllFlashcards}>All Flashcards</li>
-          <li onClick={this.goToMissedFlashcards}>Missed Flashcards</li>
+          <li onClick={this.goToMissedFlashcards}>Flashcards for Review</li>
           <li onClick={this.startOver}>Start Over</li>
         </ul>
       </article>

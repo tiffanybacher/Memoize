@@ -28,7 +28,7 @@ class Nav extends Component {
     }
   }
 
-  handleClick = () => {
+  toggleDropdown = () => {
     this.setState({
       showDropdown: !this.state.showDropdown
     });
@@ -46,7 +46,8 @@ class Nav extends Component {
         showDropdown={this.state.showDropdown}
         hideDropdown={this.hideDropdown}
         hideMainFlashcard={this.props.hideMainFlashcard}
-        showAllFlashcards={this.props.showAllFlashcards} />
+        showAllFlashcards={this.props.showAllFlashcards}
+        showMissedFlashcards={this.props.showMissedFlashcards} />
     }
 
     return (
@@ -62,7 +63,7 @@ class Nav extends Component {
           : "bars-btn"}>
           <i 
             className="fas fa-bars"
-            onClick={this.handleClick}>
+            onClick={this.toggleDropdown}>
           </i>
         </button>
         {dropdown}

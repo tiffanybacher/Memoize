@@ -7,7 +7,9 @@ exports[`Instructions should match snapshot 1`] = `
   <h2>
     Learn About Objects and Classes!
   </h2>
-  <p>
+  <p
+    aria-live="polite"
+  >
     Answer the question on the flashcard below. Submit your answer first then check your answer!
   </p>
 </section>

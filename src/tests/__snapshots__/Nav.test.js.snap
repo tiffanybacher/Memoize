@@ -15,9 +15,13 @@ exports[`Nav should match snapshot 1`] = `
   >
     Memoize
   </h1>
-  <i
-    className="fas fa-bars"
-    onClick={[Function]}
-  />
+  <button
+    className="bars-btn"
+  >
+    <i
+      className="fas fa-bars"
+      onClick={[Function]}
+    />
+  </button>
 </nav>
 `;

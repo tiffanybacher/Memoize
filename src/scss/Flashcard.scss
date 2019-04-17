@@ -15,6 +15,21 @@
     margin: 0;
     padding: 0 30px 30px;
   }
+
+  .show-btn {
+    background-color: $purple;
+    border-top: 3px solid $purple;
+    border-right: 3px solid $purple;
+    border-bottom: none;
+    border-left: none;
+    border-radius: 0 3px 0 0;
+    color: white;
+    font-family: "Montserrat";
+    font-size: 1em;
+    font-weight: 600;
+    padding: 10px;
+    margin: 0;
+  }
 }
 
 // iPad

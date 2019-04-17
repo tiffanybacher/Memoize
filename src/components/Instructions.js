@@ -5,6 +5,10 @@ class Instructions extends Component {
     super(props);
   }
 
+  backToQuiz = () => {
+    this.props.backToMainCard();
+  }
+
   render() {
       let header;
       let instructions;
@@ -19,14 +23,31 @@ class Instructions extends Component {
         instructions =
           <p aria-live="polite">If you feel good about your answer, let's keep going! If you think you may need more review, you can save this card to come back to this question later.</p>
       } else if (this.props.allCardsShown) {
-          header =
-            <h2>All Flashcards</h2>
-          instructions =
-            <a 
-              className="back-btn" 
-              onClick={this.backToQuiz}>
-              Go back to quiz
-            </a>
+        header =
+          <h2>All Flashcards</h2>
+        instructions =
+          <a 
+            className="back-btn" 
+            onClick={this.backToQuiz}>
+            Go back to quiz
+          </a>
+      } else if (this.props.missedCardsShown && !this.props.savedCards) {
+        header = <h2>No Cards Saved For Review!</h2>
+        instructions =
+          <a 
+            className="back-btn" 
+            onClick={this.backToQuiz}>
+            Go back to quiz
+          </a>
+      } else if (this.props.missedCardsShown) {
+        header =
+          <h2>Flashcards Saved for Review</h2>
+        instructions =
+          <a 
+            className="back-btn" 
+            onClick={this.backToQuiz}>
+            Go back to quiz
+          </a>
       } else {
         header =
           <h2>Learn About Objects and Classes!</h2>
