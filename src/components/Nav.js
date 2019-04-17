@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import Dropdown from '../components/Dropdown';
 
 class Nav extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       slide: 0,
       showDropdown: false
@@ -44,7 +44,9 @@ class Nav extends Component {
     if (this.state.showDropdown) {
       var dropdown = <Dropdown 
         showDropdown={this.state.showDropdown}
-        hideDropdown={this.hideDropdown} />
+        hideDropdown={this.hideDropdown}
+        hideMainFlashcard={this.props.hideMainFlashcard}
+        showAllFlashcards={this.props.showAllFlashcards} />
     }
 
     return (

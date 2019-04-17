@@ -5,6 +5,7 @@ import Instructions from '../components/Instructions'
 import Flashcard from '../components/Flashcard';
 import AnswerInput from '../components/AnswerInput';
 import UserArea from '../components/UserArea';
+import AllCardsArea from '../components/AllCardsArea';
 
 class App extends Component {
   constructor() {
@@ -17,7 +18,9 @@ class App extends Component {
       answerIsShown: false,
       userAnswer: '',
       savedMsgIsShown: false,
-      savedCards: this.getSavedCards() || null
+      savedCards: this.getSavedCards() || null,
+      flashcardShown: true,
+      allCardsShown: false
     }
   }
 
@@ -140,15 +143,27 @@ class App extends Component {
     })
   }
 
+  hideMainFlashcard = () => {
+    this.setState({
+      flashcardShown: false
+    })
+  }
+
+  showAllFlashcards = () => {
+    this.setState({
+      allCardsShown: true
+    })
+  }
+
   render() {
     // console.log('saved cards:', this.state.savedCards);
     // console.log('card selection:', this.state.cardSelection);
     // console.log('current card:', this.state.currentCardData);
 
-    let userInput;
+    let UserInput;
 
     if (this.state.answerIsShown) {
-      userInput = 
+      UserInput = 
         <UserArea 
           userAnswer={this.state.userAnswer}
           hideAnswer={this.hideAnswer}
@@ -158,18 +173,20 @@ class App extends Component {
           saveCardToStorage={this.saveCardToStorage}
           updateSavedCards={this.updateSavedCards}
         />
-    } else {
-      userInput = 
+    } else if (this.state.flashcardShown) {
+      UserInput = 
         <AnswerInput 
           showAnswer={this.showAnswer}
           getUserAnswer={this.getUserAnswer}
         />
-    }
+    } 
 
     return (
       <div className="App">
         <header className="App-header">
-          <Nav />
+          <Nav 
+            hideMainFlashcard={this.hideMainFlashcard}
+            showAllFlashcards={this.showAllFlashcards} />
         </header>
         <Cat />
         <section className="main-background">
@@ -177,12 +194,18 @@ class App extends Component {
             <Instructions
               answerIsShown={this.state.answerIsShown}
               savedMsgIsShown={this.state.savedMsgIsShown} />
-            <Flashcard 
-              question={this.state.currentCardData.question}
-              answer={this.state.currentCardData.answer}
-              answerIsShown={this.state.answerIsShown}
-            />
-            {userInput}
+            {this.state.flashcardShown &&
+              <Flashcard 
+                question={this.state.currentCardData.question}
+                answer={this.state.currentCardData.answer}
+                answerIsShown={this.state.answerIsShown} /> 
+            } 
+            {this.state.allCardsShown &&
+              <AllCardsArea
+                allCards={this.state.allCards}
+                allCardsShown={this.state.allCardsShown} />
+            }
+            {UserInput}
           </div>
         </section>
       </div>
