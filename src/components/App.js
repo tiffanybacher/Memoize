@@ -5,19 +5,23 @@ import Instructions from '../components/Instructions'
 import Flashcard from '../components/Flashcard';
 import AnswerInput from '../components/AnswerInput';
 import UserArea from '../components/UserArea';
+import AllCardsArea from '../components/AllCardsArea';
+import MissedCardsArea from '../components/MissedCardsArea';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      group: 1,
       allCards: '',
       cardSelection: this.getSavedCardSelection() || null,
       currentCardData: '',
       answerIsShown: false,
       userAnswer: '',
       savedMsgIsShown: false,
-      savedCards: this.getSavedCards() || null
+      savedCards: this.getSavedCards() || null,
+      flashcardShown: true,
+      allCardsShown: false,
+      missedCardsShown: false
     }
   }
 
@@ -110,6 +114,11 @@ class App extends Component {
     }
   }
 
+  removeAllFromStorage = () => {
+    localStorage.removeItem('savedCards');
+    localStorage.removeItem('savedSelection');
+  }
+
   updateSavedCards = () => {
     if (!this.state.savedCards) {
       this.setState({
@@ -137,18 +146,60 @@ class App extends Component {
   hideSavedMsg = () => {
     this.setState({
       savedMsgIsShown: false
-    })
+    });
+  }
+
+  hideMainFlashcard = () => {
+    this.setState({
+      flashcardShown: false
+    });
+  }
+
+  showAllFlashcards = () => {
+    this.setState({
+      allCardsShown: true
+    });
+  }
+
+  showMissedFlashcards = () => {
+    this.setState({
+      missedCardsShown: true
+    });
+  }
+
+  backToMainCard = () => {
+    this.setState({
+      allCardsShown: false,
+      missedCardsShown: false,
+      flashcardShown: true
+    });
+  }
+
+  resetDefaults = () => {
+    this.removeAllFromStorage();
+
+    this.setState({
+      allCards: this.state.allCards,
+      cardSelection: null,
+      currentCardData: '',
+      answerIsShown: false,
+      userAnswer: '',
+      savedMsgIsShown: false,
+      savedCards: null,
+      flashcardShown: true,
+      allCardsShown: false,
+      missedCardsShown: false
+    });
+
+    this.startFreshCardSelection();
+    this.updateCardData();
   }
 
   render() {
-    // console.log('saved cards:', this.state.savedCards);
-    // console.log('card selection:', this.state.cardSelection);
-    // console.log('current card:', this.state.currentCardData);
-
-    let userInput;
+    let UserInput;
 
     if (this.state.answerIsShown) {
-      userInput = 
+      UserInput = 
         <UserArea 
           userAnswer={this.state.userAnswer}
           hideAnswer={this.hideAnswer}
@@ -157,32 +208,57 @@ class App extends Component {
           hideSavedMsg={this.hideSavedMsg}
           saveCardToStorage={this.saveCardToStorage}
           updateSavedCards={this.updateSavedCards}
+          resetDefaults={this.resetDefaults}
+          cardSelection={this.state.cardSelection}
         />
-    } else {
-      userInput = 
+    } else if (this.state.flashcardShown) {
+      UserInput = 
         <AnswerInput 
           showAnswer={this.showAnswer}
           getUserAnswer={this.getUserAnswer}
         />
-    }
+    } 
 
     return (
       <div className="App">
         <header className="App-header">
-          <Nav />
+          <Nav 
+            hideMainFlashcard={this.hideMainFlashcard}
+            showAllFlashcards={this.showAllFlashcards}
+            showMissedFlashcards={this.showMissedFlashcards}
+            resetDefaults={this.resetDefaults} />
         </header>
         <Cat />
         <section className="main-background">
           <div className="main-container">
             <Instructions
               answerIsShown={this.state.answerIsShown}
-              savedMsgIsShown={this.state.savedMsgIsShown} />
-            <Flashcard 
-              question={this.state.currentCardData.question}
-              answer={this.state.currentCardData.answer}
-              answerIsShown={this.state.answerIsShown}
-            />
-            {userInput}
+              savedMsgIsShown={this.state.savedMsgIsShown}
+              allCardsShown={this.state.allCardsShown}
+              missedCardsShown={this.state.missedCardsShown}
+              backToMainCard ={this.backToMainCard }
+              savedCards={this.state.savedCards} />
+
+            {this.state.flashcardShown &&
+              <Flashcard 
+                question={this.state.currentCardData.question}
+                answer={this.state.currentCardData.answer}
+                answerIsShown={this.state.answerIsShown} /> 
+            } 
+
+            {this.state.allCardsShown &&
+              <AllCardsArea
+                allCards={this.state.allCards}
+                allCardsShown={this.state.allCardsShown} />
+            }
+
+            {this.state.missedCardsShown &&
+              <MissedCardsArea
+                savedCards={this.state.savedCards}
+                missedCardsShown={this.state.missedCardsShown} />
+            }
+
+            {UserInput}
           </div>
         </section>
       </div>

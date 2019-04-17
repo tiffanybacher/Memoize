@@ -9,9 +9,14 @@ class UserArea extends Component {
   }
 
   moveToNextQuestion = () => {
-    this.props.hideSavedMsg();
-    this.props.hideAnswer();
-    this.props.updateCardSelection();
+    // console.log(this.props.cardSelection.length)
+    if (this.props.cardSelection.length === 1) {
+      this.props.resetDefaults();
+    } else {
+      this.props.hideSavedMsg();
+      this.props.hideAnswer();
+      this.props.updateCardSelection();
+    }
   }
 
   saveCard = () => {

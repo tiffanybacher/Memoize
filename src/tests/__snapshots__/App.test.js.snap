@@ -7,7 +7,11 @@ exports[`App should match snapshot 1`] = `
   <header
     className="App-header"
   >
-    <Nav />
+    <Nav
+      hideMainFlashcard={[Function]}
+      showAllFlashcards={[Function]}
+      showMissedFlashcards={[Function]}
+    />
   </header>
   <Cat />
   <section
@@ -17,7 +21,11 @@ exports[`App should match snapshot 1`] = `
       className="main-container"
     >
       <Instructions
+        allCardsShown={false}
         answerIsShown={false}
+        backToMainCard={[Function]}
+        missedCardsShown={false}
+        savedCards={null}
         savedMsgIsShown={false}
       />
       <Flashcard

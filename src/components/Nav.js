@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import Dropdown from '../components/Dropdown';
 
 class Nav extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       slide: 0,
       showDropdown: false
@@ -28,7 +28,7 @@ class Nav extends Component {
     }
   }
 
-  handleClick = () => {
+  toggleDropdown = () => {
     this.setState({
       showDropdown: !this.state.showDropdown
     });
@@ -44,7 +44,11 @@ class Nav extends Component {
     if (this.state.showDropdown) {
       var dropdown = <Dropdown 
         showDropdown={this.state.showDropdown}
-        hideDropdown={this.hideDropdown} />
+        hideDropdown={this.hideDropdown}
+        hideMainFlashcard={this.props.hideMainFlashcard}
+        showAllFlashcards={this.props.showAllFlashcards}
+        showMissedFlashcards={this.props.showMissedFlashcards}
+        resetDefaults={this.props.resetDefaults} />
     }
 
     return (
@@ -55,12 +59,14 @@ class Nav extends Component {
           transition: `transform 200ms linear` 
         }} >
         <h1 className="Nav-header">Memoize</h1>
-        <i 
-          className={this.state.showDropdown 
-          ? "fas fa-bars bars-active"
-          : "fas fa-bars"}
-          onClick={this.handleClick}>
-        </i>
+        <button className={this.state.showDropdown 
+          ? "bars-btn bars-active"
+          : "bars-btn"}>
+          <i 
+            className="fas fa-bars"
+            onClick={this.toggleDropdown}>
+          </i>
+        </button>
         {dropdown}
       </nav>
     );

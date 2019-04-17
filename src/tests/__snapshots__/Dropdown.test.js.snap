@@ -7,13 +7,19 @@ exports[`Dropdown should match snapshot 1`] = `
   <ul
     onMouseLeave={[Function]}
   >
-    <li>
+    <li
+      onClick={[Function]}
+    >
       All Flashcards
     </li>
-    <li>
-      Missed Flashcards
+    <li
+      onClick={[Function]}
+    >
+      Flashcards for Review
     </li>
-    <li>
+    <li
+      onClick={[Function]}
+    >
       Start Over
     </li>
   </ul>
