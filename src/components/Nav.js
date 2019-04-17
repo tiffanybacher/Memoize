@@ -47,7 +47,8 @@ class Nav extends Component {
         hideDropdown={this.hideDropdown}
         hideMainFlashcard={this.props.hideMainFlashcard}
         showAllFlashcards={this.props.showAllFlashcards}
-        showMissedFlashcards={this.props.showMissedFlashcards} />
+        showMissedFlashcards={this.props.showMissedFlashcards}
+        resetDefaults={this.props.resetDefaults} />
     }
 
     return (

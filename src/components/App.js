@@ -114,6 +114,11 @@ class App extends Component {
     }
   }
 
+  removeAllFromStorage = () => {
+    localStorage.removeItem('savedCards');
+    localStorage.removeItem('savedSelection');
+  }
+
   updateSavedCards = () => {
     if (!this.state.savedCards) {
       this.setState({
@@ -170,6 +175,26 @@ class App extends Component {
     });
   }
 
+  resetDefaults = () => {
+    this.removeAllFromStorage();
+
+    this.setState({
+      allCards: this.state.allCards,
+      cardSelection: null,
+      currentCardData: '',
+      answerIsShown: false,
+      userAnswer: '',
+      savedMsgIsShown: false,
+      savedCards: null,
+      flashcardShown: true,
+      allCardsShown: false,
+      missedCardsShown: false
+    });
+
+    this.startFreshCardSelection();
+    this.updateCardData();
+  }
+
   render() {
     let UserInput;
 
@@ -183,6 +208,8 @@ class App extends Component {
           hideSavedMsg={this.hideSavedMsg}
           saveCardToStorage={this.saveCardToStorage}
           updateSavedCards={this.updateSavedCards}
+          resetDefaults={this.resetDefaults}
+          cardSelection={this.state.cardSelection}
         />
     } else if (this.state.flashcardShown) {
       UserInput = 
@@ -198,7 +225,8 @@ class App extends Component {
           <Nav 
             hideMainFlashcard={this.hideMainFlashcard}
             showAllFlashcards={this.showAllFlashcards}
-            showMissedFlashcards={this.showMissedFlashcards} />
+            showMissedFlashcards={this.showMissedFlashcards}
+            resetDefaults={this.resetDefaults} />
         </header>
         <Cat />
         <section className="main-background">
@@ -229,7 +257,7 @@ class App extends Component {
                 savedCards={this.state.savedCards}
                 missedCardsShown={this.state.missedCardsShown} />
             }
-            
+
             {UserInput}
           </div>
         </section>

@@ -27,6 +27,9 @@ class Dropdown extends Component {
     // remove saved cards from local storage
     // remove card selection from local storage
     // reset all state defaults
+
+   this.props.resetDefaults();
+   this.props.hideDropdown();
   }
 
   render() {
